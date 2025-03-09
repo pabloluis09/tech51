@@ -6,18 +6,21 @@ import LandingPage from "./components/pages/LandingPage"
 import Shop from "./components/pages/Shop"
 import ProductDetail from "./components/pages/ProductDetail"
 import Cart from "./components/pages/Cart"
-// import Checkout from "./components/pages/Checkout"
-import Login from "./components/pages/Login"
-import Register from "./components/pages/Register"
+import Login from "./components/auth/Login"
+import Register from "./components/auth/Register"
 import Profile from "./components/pages/Profile"
 import Giveaways from "./components/pages/Giveaways"
-// import Subscriptions from "./components/pages/Subscriptions"
 import Dashboard from "./components/pages/Dashboard"
 import NotFound from "./components/pages/NotFound"
 import { AuthProvider } from "./components/context/AuthContext"
 import { CartProvider } from "./components/context/CartContext"
 import ProtectedRoute from "./components/ProtectedRoute"
 import ScrollToTop from "./components/ScrollToTop"
+import UserManagement from './components/admin/UserManagement';
+import ProductManagement from './components/admin/ProductManagement';
+import SubscriptionManagement from './components/admin/SubscriptionManagement';
+import OrdersManagement from './components/admin/OrdersManagement';
+import Sidebar from './components/admin/Sidebar';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -83,18 +86,14 @@ function App() {
                   path="/subscriptions"
                   element={
                     <ProtectedRoute>
-                      {/* <Subscriptions /> */}
+                      <SubscriptionManagement />
                     </ProtectedRoute>
                   }
                 />
-                <Route
-                  path="/dashboard"
-                  element={
-                    <ProtectedRoute adminOnly={true}>
-                      <Dashboard />
-                    </ProtectedRoute>
-                  }
-                />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/users" element={<UserManagement />} />
+                <Route path="/products" element={<ProductManagement />} />
+                <Route path="/orders" element={<OrdersManagement />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

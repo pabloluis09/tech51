@@ -1,12 +1,12 @@
-import { useState } from "react"
-import { Users, Package, ShoppingCart, UserPlus } from "lucide-react"
-import UserManagement from "../admin/UserManagement"
-import ProductManagement from "../admin/ProductManagement"
-import OrdersManagement from "../admin/OrdersManagement"
-import SubscriberManagement from "../admin/SubscriberManagement"
+import { useState } from "react";
+import { Users, Package, ShoppingCart, UserPlus } from "lucide-react";
+import UserManagement from "../admin/UserManagement";
+import ProductManagement from "../admin/ProductManagement";
+import OrdersManagement from "../admin/OrdersManagement";
+import SubscriptionManagement from "../admin/SubscriptionManagement";
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState("users")
+  const [activeTab, setActiveTab] = useState("users");
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -35,20 +35,20 @@ const Dashboard = () => {
           Órdenes
         </button>
         <button
-          className={`flex items-center ${activeTab === "subscribers" ? "text-blue-600" : "text-gray-600"}`}
-          onClick={() => setActiveTab("subscribers")}
+          className={`flex items-center ${activeTab === "subscriptions" ? "text-blue-600" : "text-gray-600"}`}
+          onClick={() => setActiveTab("subscriptions")}
         >
           <UserPlus className="mr-2" />
-          Suscriptores
+          Suscripciones
         </button>
       </div>
 
       {activeTab === "users" && <UserManagement />}
       {activeTab === "products" && <ProductManagement />}
       {activeTab === "orders" && <OrdersManagement />}
-      {activeTab === "subscribers" && <SubscriberManagement />}
+      {activeTab === "subscriptions" && <SubscriptionManagement />}
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

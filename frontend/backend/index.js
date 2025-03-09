@@ -5,6 +5,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import connectDB from './config/db.js';
+import userRoutes from './routes/userRoutes.js';
+import productRoutes from './routes/productRoutes.js';
+import subscriptionRoutes from './routes/subscriptionRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -20,6 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 // Connect to MongoDB
 connectDB();
 
+// API Routes
+app.use('/api/users', userRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/subscriptions', subscriptionRoutes);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

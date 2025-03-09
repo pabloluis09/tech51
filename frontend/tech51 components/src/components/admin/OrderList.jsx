@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const OrdersManagement = () => {
+const OrderList = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -14,15 +14,15 @@ const OrdersManagement = () => {
   }, []);
 
   return (
-    <div className="orders-management">
-      <h2 className="text-2xl font-bold mb-4">Orders</h2>
-      <ul className="list">
+    <div className="order-list">
+      <h2>Orders</h2>
+      <ul>
         {orders.map(order => (
-          <li key={order._id} className="list-item">{order._id} - {order.status}</li>
+          <li key={order._id}>{order._id} - {order.status}</li>
         ))}
       </ul>
     </div>
   );
 };
 
-export default OrdersManagement;
+export default OrderList;
